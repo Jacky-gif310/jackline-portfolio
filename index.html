@@ -3,71 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jackline Mutheu</title>
-
-<style>
-
-body{
-margin:0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:#F7F8FA;
-font-family:Arial,sans-serif;
-}
-
-.card{
-text-align:center;
-padding:60px;
-background:white;
-border-radius:18px;
-box-shadow:0 10px 35px rgba(0,0,0,.08);
-max-width:550px;
-}
-
-h1{
-font-size:48px;
-color:#2B4C5C;
-margin:0;
-}
-
-h2{
-font-weight:400;
-color:#14161A;
-margin-top:15px;
-}
-
-p{
-margin-top:30px;
-line-height:1.6;
-color:#666;
-}
-
-</style>
-
+<title>Jackline Mutheu — Machine Learning</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="card">
+<nav>
+  <a href="index.html" class="brand">Jackline Mutheu</a>
+  <div class="links">
+    <a href="index.html" class="active">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="process.html">Process</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
 
-<h1>Jackline Mutheu</h1>
+<main>
+  <div class="hero">
+    <h1>I turn scattered search signals into a ranked list of exactly which pages to fix first.</h1>
+    <p class="sub">Machine Learning intern at FlyRank, building decision-support tools for content teams — not black boxes.</p>
+  </div>
 
-<h2>Machine Learning Portfolio</h2>
+  <section>
+    <h2>What I do</h2>
+    <p>I build machine learning that content teams can actually act on: models that explain their own reasoning, get honestly compared against a hand-written baseline, and stay upfront about what they can't prove yet. My work leans on real data, real leakage checks, and real errors read out loud — not just a high score.</p>
+  </section>
 
-<p>
-This portfolio is currently under development as part of the
-FlyRank AI Internship.
-</p>
+  <section>
+    <h2>Featured case</h2>
+    <div class="case">
+      <span class="tag">Capstone · Machine Learning Track</span>
+      <h3>Refresh / Content Opportunity Scoring</h3>
+      <p>A prioritization model that helps content teams decide which pages deserve review first — built from a hand-written baseline, checked for leakage twice, and compared against trained models on the exact same held-out data.</p>
+      <p><strong>Headline result:</strong> the hand-written baseline actually scored worse than random selection on the final target (Precision@50 of 0.040 vs. a 0.232 base rate) — both trained models clearly beat it once evaluated fairly.</p>
+      <a class="cta" href="case-studies.html#capstone">Read the full case study →</a>
+    </div>
+  </section>
+</main>
 
-<p>
-Coming Soon...
-</p>
-
-</div>
+<footer>
+  <a class="cta primary" href="https://github.com/Jacky-gif310/flyrank-ml-internship" target="_blank" rel="noopener">Review my GitHub</a>
+  <p class="style-note">Newsreader + IBM Plex Sans · #2B4C5C · #14161A · #F7F8FA · #D8A24A</p>
+</footer>
 
 </body>
-
 </html>

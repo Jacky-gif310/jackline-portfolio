@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process — Jackline Mutheu</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">Jackline Mutheu</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="process.html" class="active">Process</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<main>
+  <h1 style="font-size:32px; margin-bottom: 16px;">Process</h1>
+  <p style="margin-bottom: 40px; color:#4A4E57;">The judgment calls behind the work — not just the finished result.</p>
+
+  <section>
+    <h2>Judgment in practice</h2>
+
+    <div class="case">
+      <h3>Rejecting the obvious choice</h3>
+      <p>When building this site's visual identity, I generated a network/node-graph texture as the hero graphic — the default "AI" visual. I rejected it: it's become a design cliché that suggests "artificial intelligence" generically rather than communicating anything about my actual work, and its density fought the calm, understated mood the rest of the kit is built around. I used a single trend-line graphic instead — it echoes the actual signal (search performance trend) the capstone is scoring.</p>
+    </div>
+
+    <div class="case">
+      <h3>Choosing the boring stack on purpose</h3>
+      <p>For this site itself, I compared three build options — plain HTML + GitHub Pages, Jekyll, and React + Vercel with a live model demo — before choosing the simplest one. The more powerful option could have shown a live, interactive demo of the model, which was genuinely tempting. I didn't have a trained model to demo yet, so I chose not to build complexity in service of a capability I didn't actually have.</p>
+    </div>
+
+    <div class="case">
+      <h3>Reading my own model's mistakes out loud</h3>
+      <p>The capstone case study includes real false positives and false negatives from the Random Forest model — not because they're impressive, but because they show where the model's assumptions break. Low-volume pages get flagged as "declining" when they may simply not have enough traffic for a trend to register either way; freshly-updated pages get missed because the model treats recency as a stand-in for "healthy" that doesn't always hold.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tools & workflow</h2>
+    <p>I use a Claude Project configured with my Voice Card (practical, clear, honest, curious, evidence-based) as a standing instruction, so AI-assisted drafts already sound like me before I edit them, not after. My identity kit's style note lives there too, so new pages and visuals inherit it automatically instead of me re-specifying it each time.</p>
+    <p>For recurring research tasks, I use a four-step chained workflow (Gather → Synthesize → Draft → Review & Format) rather than one long prompt — narrow, single-purpose steps are easier to check and catch mistakes in than one prompt trying to do everything at once.</p>
+  </section>
+</main>
+
+<footer>
+  <a class="cta primary" href="https://github.com/Jacky-gif310/flyrank-ml-internship" target="_blank" rel="noopener">Review my GitHub</a>
+  <p class="style-note">Newsreader + IBM Plex Sans · #2B4C5C · #14161A · #F7F8FA · #D8A24A</p>
+</footer>
+
+</body>
+</html>

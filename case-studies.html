@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Jackline Mutheu</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">Jackline Mutheu</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html" class="active">Case Studies</a>
+    <a href="process.html">Process</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<main>
+  <h1 style="font-size:32px; margin-bottom: 32px;">Case Studies</h1>
+
+  <section id="capstone">
+    <div class="case">
+      <span class="tag">Capstone · Machine Learning Track</span>
+      <h3>Refresh / Content Opportunity Scoring</h3>
+
+      <p><strong>Problem:</strong> FlyRank's content teams need to know which pages, out of thousands, are worth reviewing for a refresh — but there's no labeled dataset of "this page needed a refresh and it worked." Any prioritization has to be built on observable search-performance signals alone, and stay honest about what it can and can't prove.</p>
+
+      <p><strong>What I did:</strong> I framed the problem as a proxy classification task — a page counts as an opportunity if its search trend is declining and it's sitting outside the top 10 positions. I documented a data contract up front, naming exactly which signals were safe to use at decision time and which ones would leak the answer. I built a hand-written baseline first (a CTR-gap rule, checked against two real signals — one confirmed, one honestly mixed) before touching a trained model at all.</p>
+
+      <p><strong>The catch that mattered:</strong> my first pass at model features included two columns that looked like reasonable trend signals. Checking the data dictionary confirmed they were literally the two numbers used to compute the label itself — I dropped them and reran everything. Scores came down from an inflated result to a more honest one. That drop is documented in the notebook, not hidden.</p>
+
+      <table class="metrics-table">
+        <tr><th>Model</th><th>ROC-AUC</th><th>Precision@50</th><th>Precision@20</th></tr>
+        <tr><td>Hand-written baseline</td><td>0.536</td><td>0.040</td><td>0.000</td></tr>
+        <tr><td>Logistic Regression</td><td>0.600</td><td>0.260</td><td>0.350</td></tr>
+        <tr><td>Random Forest</td><td>0.573</td><td>0.320</td><td>0.350</td></tr>
+      </table>
+
+      <p><strong>Outcome:</strong> the baseline actually performed worse than picking pages at random once evaluated on the real target — a useful, honest finding, not a failure to hide. Both trained models beat it clearly. Random Forest wins on the metric that matters most for a prioritized queue (Precision@50) despite a lower overall ranking score than Logistic Regression — I reported both numbers instead of picking whichever favored one model.</p>
+
+      <p><strong>Status:</strong> this is a decision-support prioritization tool for a human reviewer, not a causal claim about what fixes traffic, and not yet in production.</p>
+
+      <figure>
+        <img src="notebook-screenshot-cropped.png" alt="Notebook screenshot showing the baseline setup code and printed decline rate">
+        <figcaption>The Week-4 baseline notebook — setup code and the real printed result (30,000 pages, 0.542 decline rate).</figcaption>
+      </figure>
+
+      <a class="cta" href="https://github.com/Jacky-gif310/flyrank-ml-internship/blob/main/work/notebooks/w05_model.ipynb" target="_blank" rel="noopener">View the modeling notebook →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The repository</h2>
+    <div class="case">
+      <figure>
+        <img src="github-repo-screenshot.png" alt="GitHub repository file structure">
+        <figcaption>Every notebook, data contract, and write-up lives in one public repo.</figcaption>
+      </figure>
+      <a class="cta" href="https://github.com/Jacky-gif310/flyrank-ml-internship" target="_blank" rel="noopener">Browse the repo →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Supporting work</h2>
+    <div class="case">
+      <span class="tag">ML Task Framing + Data Contract</span>
+      <h3>Scoping the problem before touching a model</h3>
+      <p>Before any modeling, I documented the unit of analysis, the safe feature candidates, and the data-quality limitations — missing GSC/GA4 signals, uneven client history, and no confirmed refresh-outcome labels. This is the rigor the capstone result above is built on.</p>
+      <figure>
+        <img src="research-doc-cropped.png" alt="Research document showing the Voice Card and framing for Week 2 case studies">
+        <figcaption>Case-study framing doc — the same voice and structure used across this portfolio.</figcaption>
+      </figure>
+      <a class="cta" href="https://github.com/Jacky-gif310/flyrank-ml-internship/blob/main/work/notebooks/w03_data_contract.ipynb" target="_blank" rel="noopener">See the data contract →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>AI Fluency work</h2>
+    <p style="margin-bottom: 16px; font-size: 15px; color: #4A4E57;">Secondary to the ML work above, but part of how I build.</p>
+    <ul class="secondary-list">
+      <li><strong>Prompt Iteration Log</strong> — documenting how role assignment, context, and structured output changed AI-generated technical drafts, step by step.</li>
+      <li><strong>Automation Workflow</strong> — a four-step, no-code pipeline (Gather → Synthesize → Draft → Review) for a weekly AI/SEO industry brief, with an honest time-savings accounting.</li>
+      <li><strong>Identity Kit</strong> — the type, palette, and mark this whole site is built from.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <a class="cta primary" href="https://github.com/Jacky-gif310/flyrank-ml-internship" target="_blank" rel="noopener">Review my GitHub</a>
+  <p class="style-note">Newsreader + IBM Plex Sans · #2B4C5C · #14161A · #F7F8FA · #D8A24A</p>
+</footer>
+
+</body>
+</html>

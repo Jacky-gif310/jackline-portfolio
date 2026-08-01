@@ -1,0 +1,35 @@
+<svg width="480" height="120" viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="120" fill="#F7F8FA"/>
+
+  <!-- Document / notebook icon -->
+  <g transform="translate(20,20)">
+    <rect x="8" y="4" width="48" height="64" rx="4" fill="none" stroke="#2B4C5C" stroke-width="2.5"/>
+    <line x1="18" y1="22" x2="46" y2="22" stroke="#2B4C5C" stroke-width="2.5"/>
+    <line x1="18" y1="34" x2="46" y2="34" stroke="#2B4C5C" stroke-width="2.5"/>
+    <line x1="18" y1="46" x2="36" y2="46" stroke="#2B4C5C" stroke-width="2.5"/>
+    <circle cx="46" cy="58" r="3.5" fill="#D8A24A"/>
+  </g>
+
+  <!-- Trend / chart icon -->
+  <g transform="translate(140,20)">
+    <path d="M 8 60 L 24 40 L 38 48 L 60 12" stroke="#2B4C5C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="60" cy="12" r="3.5" fill="#D8A24A"/>
+  </g>
+
+  <!-- Data node icon -->
+  <g transform="translate(260,20)">
+    <circle cx="34" cy="14" r="5" fill="none" stroke="#2B4C5C" stroke-width="2.5"/>
+    <circle cx="14" cy="50" r="5" fill="none" stroke="#2B4C5C" stroke-width="2.5"/>
+    <circle cx="54" cy="50" r="5" fill="none" stroke="#2B4C5C" stroke-width="2.5"/>
+    <line x1="34" y1="19" x2="14" y2="45" stroke="#2B4C5C" stroke-width="2"/>
+    <line x1="34" y1="19" x2="54" y2="45" stroke="#2B4C5C" stroke-width="2"/>
+    <circle cx="54" cy="50" r="5" fill="#D8A24A"/>
+  </g>
+
+  <!-- Checkmark / review icon -->
+  <g transform="translate(380,20)">
+    <circle cx="34" cy="34" r="26" fill="none" stroke="#2B4C5C" stroke-width="2.5"/>
+    <path d="M 22 34 L 30 44 L 48 22" stroke="#2B4C5C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="34" cy="34" r="1.5" fill="#D8A24A" opacity="0"/>
+  </g>
+</svg>

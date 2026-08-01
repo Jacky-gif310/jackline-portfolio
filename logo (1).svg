@@ -1,0 +1,5 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="98" fill="#2B4C5C"/>
+  <text x="97" y="122" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic" font-weight="500" font-size="88" fill="#F7F8FA">JM</text>
+  <circle cx="152" cy="70" r="7" fill="#D8A24A"/>
+</svg>
