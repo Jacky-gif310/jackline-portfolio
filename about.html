@@ -1,164 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Jackline Mutheu</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">Jackline Mutheu</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="process.html">Process</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+</nav>
+
 <main>
+  <h1 style="font-size:32px; margin-bottom: 12px;">About</h1>
+  <p style="color:#2B4C5C; margin-bottom: 40px; font-size: 16px;">Building practical machine learning systems that turn messy search data into clear, evidence-based decisions.</p>
 
-  <h1 style="font-size:42px; margin-bottom:18px;">About</h1>
-
-  <p class="subtitle" style="font-size:18px; color:#2B4C5C; margin-bottom:48px;">
-    Building practical machine learning systems that turn messy search data into clear, evidence-based decisions.
-  </p>
-
-  <!-- BIO -->
   <section>
+    <p style="font-size: 17px;">I'm a Machine Learning intern at FlyRank, working across the ML and AI Fluency tracks. I got into this because I like the moment a messy pile of data turns into a decision someone can actually act on — not a black-box score, something you can open up and argue with.</p>
+    <p style="font-size: 17px; margin-top: 16px;">Before I trust a model, I want to know what it's leaning on and where it's wrong. That's why every project on this site starts with a baseline I can beat honestly, and a data contract naming exactly what could quietly leak the answer. I'd rather report an uncomfortable number than a clean one I can't fully explain.</p>
 
-    <p style="font-size:18px; line-height:1.9;">
-      I'm a <strong>Machine Learning Intern at FlyRank</strong>, working across both the
-      <strong>Machine Learning</strong> and <strong>General AI Fluency</strong> tracks.
-      My work focuses on building decision-support systems that transform scattered search
-      performance signals into ranked, explainable recommendations that content teams can
-      confidently act on.
-    </p>
-
-    <p style="font-size:18px; line-height:1.9; margin-top:24px;">
-      What interests me most isn't simply training models—it's understanding
-      <em>why</em> they make a recommendation. Before trusting any model, I build
-      transparent baselines, validate the underlying signals, document assumptions,
-      and check carefully for data leakage. I believe machine learning earns trust
-      when every result can be explained, challenged, and improved.
-    </p>
-
-    <p style="font-size:18px; line-height:1.9; margin-top:24px;">
-      Through the FlyRank internship I've worked on content opportunity scoring,
-      baseline ranking systems, feature engineering, model evaluation,
-      AI-assisted research workflows, and technical documentation. Every project
-      on this portfolio reflects one principle:
-    </p>
-
-    <blockquote style="
-        margin-top:28px;
-        padding:24px 28px;
-        border-left:4px solid #D8A24A;
-        background:#ffffff;
-        font-family:'Newsreader',serif;
-        font-size:28px;
-        font-style:italic;
-        line-height:1.4;
-        color:#2B4C5C;">
-        "Evidence before confidence."
+    <blockquote style="margin-top:24px; padding:20px 24px; border-left:3px solid var(--accent); background:white; font-family:'Newsreader',serif; font-style:italic; font-size:22px; color:var(--main);">
+      Evidence before confidence.
     </blockquote>
-
   </section>
 
-  <!-- CURRENTLY WORKING -->
   <section>
-
-    <h2>Currently Working On</h2>
-
-    <p style="line-height:1.8;">
-      • Refresh / Content Opportunity Scoring Capstone
-    </p>
-
-    <p style="line-height:1.8;">
-      • Baseline Action Score & Ranked Review Queue
-    </p>
-
-    <p style="line-height:1.8;">
-      • Machine Learning Model Evaluation & Validation
-    </p>
-
-    <p style="line-height:1.8;">
-      • AI Workflow Automation using Claude Projects
-    </p>
-
+    <h2>Currently working on</h2>
+    <div class="case">
+      <h3>Refresh / Content Opportunity Scoring</h3>
+      <p>An evidence-based ranking system prioritizing pages for review, built on a transparent baseline before any model touched the data.</p>
+    </div>
+    <div class="case">
+      <h3>Baseline Action Score</h3>
+      <p>A hand-written scoring rule ranking pages by CTR-fix opportunity, checked against real signals before being trusted.</p>
+    </div>
+    <div class="case">
+      <h3>Workflow automation</h3>
+      <p>A four-step research and writing pipeline (Gather → Synthesize → Draft → Review), built as a Claude Project.</p>
+    </div>
   </section>
 
-  <!-- SKILLS -->
   <section>
-
     <h2>Skills</h2>
-
-    <div class="icon-row" style="margin-bottom:24px;">
-      <img src="icon-set-final.svg"
-           alt="Machine Learning workflow icons"
-           style="height:70px;">
+    <div class="icon-row">
+      <img src="icon-set-final.svg" alt="Notebook, trend, review, and data-node icons" style="height:60px;">
     </div>
-
-    <div style="
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-        gap:20px;
-        line-height:2;">
-
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; font-size: 15px;">
       <div>
-        <strong>Machine Learning</strong><br>
-        • Feature Engineering<br>
-        • Model Evaluation<br>
-        • Baseline Systems<br>
-        • Decision Support
+        <strong style="color:var(--main);">Machine Learning</strong><br>
+        Feature engineering<br>Model evaluation<br>Baseline systems<br>Decision support
       </div>
-
       <div>
-        <strong>Programming</strong><br>
-        • Python<br>
-        • Pandas<br>
-        • NumPy<br>
-        • scikit-learn
+        <strong style="color:var(--main);">Programming</strong><br>
+        Python · Pandas<br>NumPy · scikit-learn
       </div>
-
       <div>
-        <strong>AI & Workflow</strong><br>
-        • Claude Projects<br>
-        • Prompt Engineering<br>
-        • Technical Writing<br>
-        • Documentation
+        <strong style="color:var(--main);">AI & workflow</strong><br>
+        Claude Projects<br>Prompt engineering<br>Technical writing
       </div>
-
       <div>
-        <strong>Tools</strong><br>
-        • Google Colab<br>
-        • Git & GitHub<br>
-        • Jupyter Notebook<br>
-        • VS Code
+        <strong style="color:var(--main);">Tools</strong><br>
+        Google Colab · Git<br>GitHub · Jupyter
       </div>
-
     </div>
-
   </section>
-
-  <!-- APPROACH -->
-  <section>
-
-    <h2>My Approach</h2>
-
-    <div style="
-        background:white;
-        padding:28px;
-        border-left:4px solid #2B4C5C;
-        line-height:2;">
-
-      Research the problem.<br>
-      Validate the data.<br>
-      Build a transparent baseline.<br>
-      Train carefully.<br>
-      Measure honestly.<br>
-      Explain every recommendation.
-
-    </div>
-
-  </section>
-
 </main>
 
 <footer>
-
-  <a class="cta primary"
-     href="https://github.com/Jacky-gif310/flyrank-ml-internship"
-     target="_blank"
-     rel="noopener">
-     Explore My GitHub →
-  </a>
-
-  <p class="style-note">
-    Newsreader · IBM Plex Sans ·
-    #2B4C5C · #14161A · #F7F8FA · #D8A24A
-  </p>
-
+  <a class="cta primary" href="https://github.com/Jacky-gif310/flyrank-ml-internship" target="_blank" rel="noopener">Review my GitHub</a>
+  <p class="style-note">Newsreader + IBM Plex Sans · #2B4C5C · #14161A · #F7F8FA · #D8A24A</p>
 </footer>
+
+</body>
+</html>
