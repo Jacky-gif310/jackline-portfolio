@@ -10,213 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-/* ===== NAVIGATION ===== */
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 48px;
-  background: rgba(247,248,250,0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(43,76,92,0.08);
-}
-
-nav .brand {
-  font-family: 'Newsreader', serif;
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  color: #14161A;
-  text-decoration: none;
-}
-
-nav .links {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-nav .links a {
-  position: relative;
-  padding: 8px 14px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13.5px;
-  font-weight: 500;
-  color: #2B4C5C;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background .18s ease, color .18s ease;
-}
-
-nav .links a:hover {
-  background: rgba(43,76,92,0.06);
-  color: #14161A;
-}
-
-nav .links a.active {
-  color: #14161A;
-  font-weight: 600;
-}
-
-nav .links a.active::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 2px;
-  height: 2px;
-  border-radius: 2px;
-  background: #D8A24A;
-}
-
-nav .nav-cta {
-  margin-left: 10px;
-  padding: 9px 18px !important;
-  background: #2B4C5C;
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  border-radius: 999px !important;
-}
-
-nav .nav-cta:hover {
-  background: #1c3746;
-}
-
-/* mobile menu toggle (checkbox hack, no JS required) */
-.nav-toggle { display: none; }
-
-.nav-toggle-label {
-  display: none;
-  width: 22px;
-  height: 16px;
-  position: relative;
-  cursor: pointer;
-}
-
-.nav-toggle-label span,
-.nav-toggle-label span::before,
-.nav-toggle-label span::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 2px;
-  background: #14161A;
-  border-radius: 2px;
-  transition: transform .2s ease, opacity .2s ease;
-}
-
-.nav-toggle-label span { top: 7px; }
-.nav-toggle-label span::before { top: -7px; }
-.nav-toggle-label span::after { top: 7px; }
-
-/* ===== IN-PAGE QUICK LINKS ===== */
-
-.quick-nav {
-  position: sticky;
-  top: 62px;
-  z-index: 90;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding: 4px 0 24px;
-}
-
-.quick-nav a {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  color: #2B4C5C;
-  text-decoration: none;
-  padding: 7px 15px;
-  border-radius: 999px;
-  border: 1px solid rgba(43,76,92,0.16);
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(6px);
-  transition: background .18s ease, border-color .18s ease, color .18s ease;
-}
-
-.quick-nav a:hover {
-  background: #2B4C5C;
-  border-color: #2B4C5C;
-  color: #ffffff;
-}
-
-section[id] {
-  scroll-margin-top: 130px;
-}
-
-@media (max-width: 780px) {
-
-  nav {
-    padding: 16px 22px;
-  }
-
-  .nav-toggle-label {
-    display: block;
-  }
-
-  nav .links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 2px;
-    padding: 10px 16px 18px;
-    background: #F7F8FA;
-    border-bottom: 1px solid rgba(43,76,92,0.08);
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height .25s ease, opacity .2s ease;
-  }
-
-  nav .links a {
-    padding: 12px 14px;
-  }
-
-  nav .nav-cta {
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .nav-toggle:checked ~ .links {
-    max-height: 320px;
-    opacity: 1;
-  }
-
-  .nav-toggle:checked ~ .nav-toggle-label span {
-    background: transparent;
-  }
-
-  .nav-toggle:checked ~ .nav-toggle-label span::before {
-    top: 0;
-    transform: rotate(45deg);
-  }
-
-  .nav-toggle:checked ~ .nav-toggle-label span::after {
-    top: 0;
-    transform: rotate(-45deg);
-  }
-
-  .quick-nav {
-    position: static;
-  }
-
-}
-
-</style>
-
 </head>
 <body>
 
@@ -238,11 +31,11 @@ section[id] {
 <main>
 
   <!-- HERO -->
-  <section style="background:linear-gradient(135deg,#2B4C5C,#436B80); color:white; padding:90px 60px; border-radius:24px; margin-bottom:24px; text-align:center;">
+  <section style="background:linear-gradient(135deg,#2B4C5C,#436B80); color:white; padding:90px 60px; border-radius:8px; margin-bottom:24px; text-align:center;">
     <h1 style="font-size:48px; line-height:1.15; max-width:900px; margin:auto auto 24px; color:white;">
       I turn scattered search signals into a ranked list of exactly which pages to fix first.
     </h1>
-    <p style="font-size:20px; line-height:1.7; max-width:700px; margin:auto; opacity:.95;">
+    <p style="font-family:'IBM Plex Sans',sans-serif; font-size:20px; line-height:1.7; max-width:700px; margin:auto; opacity:.95;">
       Machine Learning intern at FlyRank, building decision-support tools for content teams — not black boxes.
     </p>
     <div style="margin-top:40px;">
@@ -252,7 +45,7 @@ section[id] {
   </section>
 
   <!-- QUICK ACCESS -->
-  <nav class="quick-nav" aria-label="Section quick links" style="margin-bottom: 46px;">
+  <nav class="quick-nav" aria-label="Section quick links" style="margin-bottom: 40px;">
     <a href="#work">What I Do</a>
     <a href="#capstone">Featured Capstone</a>
     <a href="#skills">Skills</a>
@@ -261,7 +54,7 @@ section[id] {
 
   <section id="work">
     <h2>What I do</h2>
-    <p style="font-size: 18px; line-height:1.8;">I build machine learning systems that help people make better decisions. My focus isn't only creating models — it's understanding why they work. I use transparent baselines, careful validation, leakage checks, and explainable outputs, so results can be trusted and improved.</p>
+    <p style="font-family:'IBM Plex Sans',sans-serif; font-size: 18px; line-height:1.8;">I build machine learning systems that help people make better decisions. My focus isn't only creating models — it's understanding why they work. I use transparent baselines, careful validation, leakage checks, and explainable outputs, so results can be trusted and improved.</p>
   </section>
 
   <section>
@@ -283,29 +76,29 @@ section[id] {
 
   <!-- FEATURED PROJECT -->
   <section id="capstone" style="margin-top:60px;">
-    <span style="background:var(--accent); color:white; padding:8px 18px; border-radius:30px; font-weight:600; font-size:13px;">Featured Capstone</span>
+    <span style="background:var(--accent); color:white; padding:8px 18px; border-radius:30px; font-weight:600; font-size:13px; font-family:'IBM Plex Sans',sans-serif;">Featured Capstone</span>
 
     <h2 style="margin-top:24px;">Refresh / Content Opportunity Scoring</h2>
 
-    <p style="font-size:17px; line-height:1.8;">A prioritization model that helps content teams decide which pages deserve review first — built from a hand-written baseline, checked for leakage twice, and compared against trained models on the exact same held-out data.</p>
-    <p style="font-size:17px; line-height:1.8; margin-top:12px;"><strong style="color:var(--main);">Headline result:</strong> the hand-written baseline actually scored worse than random selection on the final target — both trained models clearly beat it once evaluated fairly.</p>
+    <p style="font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.8;">A prioritization model that helps content teams decide which pages deserve review first — built from a hand-written baseline, checked for leakage twice, and compared against trained models on the exact same held-out data.</p>
+    <p style="font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.8; margin-top:12px;"><strong style="color:var(--main);">Headline result:</strong> the hand-written baseline actually scored worse than random selection on the final target — both trained models clearly beat it once evaluated fairly.</p>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; margin-top:32px;">
       <div class="case" style="text-align:center;">
-        <h3 style="font-size:32px; color:var(--main);">30,000</h3>
-        <p>Pages scored</p>
+        <h3 style="font-size:32px; font-style:normal; color:var(--main);">30,000</h3>
+        <p style="font-family:'IBM Plex Sans',sans-serif;">Pages scored</p>
       </div>
       <div class="case" style="text-align:center;">
-        <h3 style="font-size:32px; color:var(--main);">2</h3>
-        <p>Signals audited</p>
+        <h3 style="font-size:32px; font-style:normal; color:var(--main);">2</h3>
+        <p style="font-family:'IBM Plex Sans',sans-serif;">Signals audited</p>
       </div>
       <div class="case" style="text-align:center;">
-        <h3 style="font-size:32px; color:var(--main);">3</h3>
-        <p>Models compared</p>
+        <h3 style="font-size:32px; font-style:normal; color:var(--main);">3</h3>
+        <p style="font-family:'IBM Plex Sans',sans-serif;">Models compared</p>
       </div>
       <div class="case" style="text-align:center;">
-        <h3 style="font-size:32px; color:var(--main);">0.320</h3>
-        <p>Best Precision@50</p>
+        <h3 style="font-size:32px; font-style:normal; color:var(--main);">0.320</h3>
+        <p style="font-family:'IBM Plex Sans',sans-serif;">Best Precision@50</p>
       </div>
     </div>
 
@@ -317,7 +110,7 @@ section[id] {
   <!-- SKILLS -->
   <section id="skills" style="margin-top:60px;">
     <h2>Core Skills</h2>
-    <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:20px;">
+    <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; font-family:'IBM Plex Sans',sans-serif;">
       <span class="tag" style="background:var(--main); color:white; padding:8px 16px; border-radius:20px; font-size:13px;">Python</span>
       <span class="tag" style="background:var(--main); color:white; padding:8px 16px; border-radius:20px; font-size:13px;">Pandas</span>
       <span class="tag" style="background:var(--main); color:white; padding:8px 16px; border-radius:20px; font-size:13px;">NumPy</span>
@@ -330,9 +123,9 @@ section[id] {
   </section>
 
   <!-- CTA -->
-  <section id="explore" style="margin-top:70px; padding:56px; text-align:center; background:var(--bg); border-radius:24px; border: 1px solid rgba(20,22,26,0.08);">
+  <section id="explore" style="margin-top:70px; padding:56px; text-align:center; background:white; border-radius:6px; border: 1px solid rgba(20,22,26,0.08);">
     <h2>Explore My Work</h2>
-    <p style="font-size:17px; line-height:1.8; max-width:600px; margin:16px auto 0;">View my notebooks, experiments, documentation, and complete machine learning projects.</p>
+    <p style="font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.8; max-width:600px; margin:16px auto 0;">View my notebooks, experiments, documentation, and complete machine learning projects.</p>
     <div style="margin-top:28px;">
       <a class="cta primary" href="https://github.com/Jacky-gif310/flyrank-ml-internship" target="_blank" rel="noopener">Explore GitHub →</a>
     </div>
