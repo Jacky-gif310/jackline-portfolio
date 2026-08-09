@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -17,6 +16,148 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
+
+/* ===== NAVIGATION ===== */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  background: rgba(247,248,250,0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(43,76,92,0.08);
+}
+
+nav .brand {
+  font-family: 'Newsreader', serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: #14161A;
+  text-decoration: none;
+}
+
+nav .links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+nav .links a {
+  position: relative;
+  padding: 8px 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #2B4C5C;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background .18s ease, color .18s ease;
+}
+
+nav .links a:hover {
+  background: rgba(43,76,92,0.06);
+  color: #14161A;
+}
+
+nav .links a.active {
+  color: #14161A;
+  font-weight: 600;
+}
+
+nav .links a.active::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: #D8A24A;
+}
+
+nav .nav-cta {
+  margin-left: 10px;
+  padding: 9px 18px !important;
+  background: #2B4C5C;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+}
+
+nav .nav-cta:hover {
+  background: #1c3746;
+}
+
+/* mobile menu toggle (checkbox hack, no JS required) */
+.nav-toggle { display: none; }
+
+.nav-toggle-label {
+  display: none;
+  width: 22px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #14161A;
+  border-radius: 2px;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.nav-toggle-label span { top: 7px; }
+.nav-toggle-label span::before { top: -7px; }
+.nav-toggle-label span::after { top: 7px; }
+
+/* ===== IN-PAGE QUICK LINKS ===== */
+
+.quick-nav {
+  position: sticky;
+  top: 62px;
+  z-index: 90;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 0 0;
+  margin-bottom: -6px;
+}
+
+.quick-nav a {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #2B4C5C;
+  text-decoration: none;
+  padding: 7px 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(43,76,92,0.16);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(6px);
+  transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.quick-nav a:hover {
+  background: #2B4C5C;
+  border-color: #2B4C5C;
+  color: #ffffff;
+}
+
+section[id] {
+  scroll-margin-top: 130px;
+}
 
 /* ===== ABOUT HERO ===== */
 
@@ -259,6 +400,67 @@
 
 /* ===== MOBILE ===== */
 
+@media (max-width: 780px) {
+
+  nav {
+    padding: 16px 22px;
+  }
+
+  .nav-toggle-label {
+    display: block;
+  }
+
+  nav .links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 10px 16px 18px;
+    background: #F7F8FA;
+    border-bottom: 1px solid rgba(43,76,92,0.08);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .25s ease, opacity .2s ease;
+  }
+
+  nav .links a {
+    padding: 12px 14px;
+  }
+
+  nav .nav-cta {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .nav-toggle:checked ~ .links {
+    max-height: 320px;
+    opacity: 1;
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label span {
+    background: transparent;
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .quick-nav {
+    position: static;
+  }
+
+}
+
 @media (max-width: 600px) {
 
   .about-hero {
@@ -290,11 +492,15 @@
 <nav>
   <a href="index.html" class="brand">Jackline Mutheu</a>
 
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu"><span></span></label>
+
   <div class="links">
     <a href="index.html">Home</a>
     <a href="case-studies.html">Case Studies</a>
     <a href="process.html">Process</a>
     <a href="about.html" class="active">About</a>
+    <a href="Jackline_Mutheu_CV.pdf" class="nav-cta" target="_blank" rel="noopener">Resume</a>
   </div>
 </nav>
 
@@ -319,52 +525,58 @@
     clear, evidence-based decisions.
   </p>
 
+  <!-- QUICK ACCESS -->
+  <nav class="quick-nav" aria-label="Section quick links">
+    <a href="#bio">Bio</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#connect">Connect</a>
+  </nav>
+
 </section>
 
 <!-- ===== BIO ===== -->
 
-<section>
+<section id="bio">
 
   <div class="bio-card">
 
-```
-<p>
-  I'm a <strong>Machine Learning Intern at FlyRank</strong>,
-  working across the Machine Learning and General AI Fluency tracks.
-  I got into this because I enjoy the moment when a messy pile of
-  data becomes a decision someone can actually act on — not a
-  black-box score, but something you can open, question, and improve.
-</p>
+    <p>
+      I'm a <strong>Machine Learning Intern at FlyRank</strong>,
+      working across the Machine Learning and General AI Fluency tracks.
+      I got into this because I enjoy the moment when a messy pile of
+      data becomes a decision someone can actually act on — not a
+      black-box score, but something you can open, question, and improve.
+    </p>
 
-<p>
-  Before I trust a model, I want to understand what it is leaning on
-  and where it can be wrong. That's why my projects start with
-  transparent baselines, careful validation, and explicit checks
-  for data leakage. I'd rather report an uncomfortable number than
-  a clean one I cannot fully explain.
-</p>
+    <p>
+      Before I trust a model, I want to understand what it is leaning on
+      and where it can be wrong. That's why my projects start with
+      transparent baselines, careful validation, and explicit checks
+      for data leakage. I'd rather report an uncomfortable number than
+      a clean one I cannot fully explain.
+    </p>
 
-<p>
-  Through the FlyRank internship, I've worked on content opportunity
-  scoring, baseline ranking systems, feature engineering, model
-  evaluation, AI-assisted research workflows, and technical
-  documentation.
-</p>
+    <p>
+      Through the FlyRank internship, I've worked on content opportunity
+      scoring, baseline ranking systems, feature engineering, model
+      evaluation, AI-assisted research workflows, and technical
+      documentation.
+    </p>
 
-<!-- SIGNATURE QUOTE -->
+    <!-- SIGNATURE QUOTE -->
 
-<blockquote class="signature-quote">
+    <blockquote class="signature-quote">
 
-  <span class="signature-mark">“</span>
+      <span class="signature-mark">"</span>
 
-  Evidence before confidence.
+      Evidence before confidence.
 
-  <span class="signature-caption">
-    — My approach to machine learning
-  </span>
+      <span class="signature-caption">
+        — My approach to machine learning
+      </span>
 
-</blockquote>
-```
+    </blockquote>
 
   </div>
 
@@ -372,52 +584,50 @@
 
 <!-- ===== CURRENTLY WORKING ON ===== -->
 
-<section>
+<section id="projects">
 
   <h2>Currently working on</h2>
 
   <div class="project-grid">
 
-```
-<div class="project-card">
+    <div class="project-card">
 
-  <span class="project-number">01</span>
+      <span class="project-number">01</span>
 
-  <h3>Content Opportunity Scoring</h3>
+      <h3>Content Opportunity Scoring</h3>
 
-  <p>
-    An evidence-based ranking system prioritizing pages for review,
-    built on a transparent baseline before any model touched the data.
-  </p>
+      <p>
+        An evidence-based ranking system prioritizing pages for review,
+        built on a transparent baseline before any model touched the data.
+      </p>
 
-</div>
+    </div>
 
-<div class="project-card">
+    <div class="project-card">
 
-  <span class="project-number">02</span>
+      <span class="project-number">02</span>
 
-  <h3>Baseline Action Score</h3>
+      <h3>Baseline Action Score</h3>
 
-  <p>
-    A hand-written scoring rule ranking pages by CTR-fix opportunity,
-    checked against real signals before being trusted.
-  </p>
+      <p>
+        A hand-written scoring rule ranking pages by CTR-fix opportunity,
+        checked against real signals before being trusted.
+      </p>
 
-</div>
+    </div>
 
-<div class="project-card">
+    <div class="project-card">
 
-  <span class="project-number">03</span>
+      <span class="project-number">03</span>
 
-  <h3>AI Workflow Automation</h3>
+      <h3>AI Workflow Automation</h3>
 
-  <p>
-    A research and writing pipeline built around
-    Gather → Synthesize → Draft → Review using Claude Projects.
-  </p>
+      <p>
+        A research and writing pipeline built around
+        Gather → Synthesize → Draft → Review using Claude Projects.
+      </p>
 
-</div>
-```
+    </div>
 
   </div>
 
@@ -425,84 +635,80 @@
 
 <!-- ===== SKILLS ===== -->
 
-<section>
+<section id="skills">
 
   <h2>Skills & tools</h2>
 
   <div class="icon-row" style="margin-bottom:25px;">
 
-```
-<img
-  src="icon-set-final.svg"
-  alt="Notebook, trend, review, and data-node icons"
-  style="height:60px;">
-```
+    <img
+      src="icon-set-final.svg"
+      alt="Notebook, trend, review, and data-node icons"
+      style="height:60px;">
 
   </div>
 
   <div class="skills-grid">
 
-```
-<div class="skill-card">
+    <div class="skill-card">
 
-  <div class="skill-icon">⌁</div>
+      <div class="skill-icon">⌁</div>
 
-  <strong>Machine Learning</strong>
+      <strong>Machine Learning</strong>
 
-  <p>
-    Feature engineering<br>
-    Model evaluation<br>
-    Baseline systems<br>
-    Decision support
-  </p>
+      <p>
+        Feature engineering<br>
+        Model evaluation<br>
+        Baseline systems<br>
+        Decision support
+      </p>
 
-</div>
+    </div>
 
-<div class="skill-card">
+    <div class="skill-card">
 
-  <div class="skill-icon">⌘</div>
+      <div class="skill-icon">⌘</div>
 
-  <strong>Programming</strong>
+      <strong>Programming</strong>
 
-  <p>
-    Python<br>
-    Pandas<br>
-    NumPy<br>
-    scikit-learn
-  </p>
+      <p>
+        Python<br>
+        Pandas<br>
+        NumPy<br>
+        scikit-learn
+      </p>
 
-</div>
+    </div>
 
-<div class="skill-card">
+    <div class="skill-card">
 
-  <div class="skill-icon">✦</div>
+      <div class="skill-icon">✦</div>
 
-  <strong>AI & Workflow</strong>
+      <strong>AI & Workflow</strong>
 
-  <p>
-    Claude Projects<br>
-    Prompt engineering<br>
-    Technical writing<br>
-    Documentation
-  </p>
+      <p>
+        Claude Projects<br>
+        Prompt engineering<br>
+        Technical writing<br>
+        Documentation
+      </p>
 
-</div>
+    </div>
 
-<div class="skill-card">
+    <div class="skill-card">
 
-  <div class="skill-icon">◈</div>
+      <div class="skill-icon">◈</div>
 
-  <strong>Tools</strong>
+      <strong>Tools</strong>
 
-  <p>
-    Google Colab<br>
-    Git & GitHub<br>
-    Jupyter<br>
-    VS Code
-  </p>
+      <p>
+        Google Colab<br>
+        Git & GitHub<br>
+        Jupyter<br>
+        VS Code
+      </p>
 
-</div>
-```
+    </div>
 
   </div>
 
@@ -510,54 +716,52 @@
 
 <!-- ===== CONNECT ===== -->
 
-<section>
+<section id="connect">
 
   <div class="connect-card">
 
-```
-<h2>Let's connect</h2>
+    <h2>Let's connect</h2>
 
-<p>
-  Interested in the work I'm building? Explore my projects,
-  review the code, connect with me on LinkedIn, or book a conversation.
-</p>
+    <p>
+      Interested in the work I'm building? Explore my projects,
+      review the code, connect with me on LinkedIn, or book a conversation.
+    </p>
 
-<div class="connect-links">
+    <div class="connect-links">
 
-  <a
-    class="cta"
-    href="https://www.linkedin.com/in/jackline-mutheu-27ab01290/"
-    target="_blank"
-    rel="noopener">
-    LinkedIn →
-  </a>
+      <a
+        class="cta"
+        href="https://www.linkedin.com/in/jackline-mutheu-27ab01290/"
+        target="_blank"
+        rel="noopener">
+        LinkedIn →
+      </a>
 
-  <a
-    class="cta"
-    href="https://github.com/Jacky-gif310/flyrank-ml-internship"
-    target="_blank"
-    rel="noopener">
-    GitHub →
-  </a>
+      <a
+        class="cta"
+        href="https://github.com/Jacky-gif310/flyrank-ml-internship"
+        target="_blank"
+        rel="noopener">
+        GitHub →
+      </a>
 
-  <a
-    class="cta"
-    href="Jackline_Mutheu_CV.pdf"
-    target="_blank"
-    rel="noopener">
-    CV →
-  </a>
+      <a
+        class="cta"
+        href="Jackline_Mutheu_CV.pdf"
+        target="_blank"
+        rel="noopener">
+        CV →
+      </a>
 
-  <a
-    class="cta"
-    href="https://calendly.com/mutheujackline976/30min"
-    target="_blank"
-    rel="noopener">
-    Book a call →
-  </a>
+      <a
+        class="cta"
+        href="https://calendly.com/mutheujackline976/30min"
+        target="_blank"
+        rel="noopener">
+        Book a call →
+      </a>
 
-</div>
-```
+    </div>
 
   </div>
 
@@ -571,12 +775,10 @@
 
   <p style="max-width:700px; line-height:1.8; font-size:15px;">
 
-```
-This portfolio will continue to grow as the FlyRank internship
-progresses. Future updates will include capstone work, experiments,
-technical write-ups, and lessons learned from building practical
-machine learning and AI systems.
-```
+    This portfolio will continue to grow as the FlyRank internship
+    progresses. Future updates will include capstone work, experiments,
+    technical write-ups, and lessons learned from building practical
+    machine learning and AI systems.
 
   </p>
 
@@ -588,12 +790,13 @@ machine learning and AI systems.
 
 <footer>
 
-<a
- class="cta primary"
- href="https://github.com/Jacky-gif310/flyrank-ml-internship"
- target="_blank"
- rel="noopener">
-Review my GitHub → </a>
+  <a
+    class="cta primary"
+    href="https://github.com/Jacky-gif310/flyrank-ml-internship"
+    target="_blank"
+    rel="noopener">
+    Review my GitHub →
+  </a>
 
   <p class="style-note">
     Newsreader + IBM Plex Sans ·
