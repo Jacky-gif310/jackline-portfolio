@@ -1,18 +1,295 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>About — Jackline Mutheu</title>
+
 <link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ===== ABOUT HERO ===== */
+
+.about-hero {
+  padding: 58px 0 42px;
+}
+
+.about-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(216,162,74,0.12);
+  color: #B17D20;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.about-label::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #D8A24A;
+}
+
+.about-hero h1 {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(42px, 7vw, 68px);
+  line-height: 1.03;
+  letter-spacing: -1.5px;
+  margin: 0 0 20px;
+  color: #14161A;
+}
+
+.about-subtitle {
+  max-width: 720px;
+  font-size: 19px;
+  line-height: 1.8;
+  color: #2B4C5C;
+}
+
+/* ===== BIO CARD ===== */
+
+.bio-card {
+  background: linear-gradient(145deg, #ffffff, #f7f8fa);
+  border: 1px solid rgba(43,76,92,0.10);
+  border-radius: 22px;
+  padding: 34px;
+  box-shadow: 0 16px 40px rgba(43,76,92,0.07);
+}
+
+.bio-card p {
+  font-size: 17px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.bio-card p + p {
+  margin-top: 20px;
+}
+
+/* ===== SIGNATURE QUOTE ===== */
+
+.signature-quote {
+  position: relative;
+  margin: 42px 0 10px;
+  padding: 38px 38px 30px 42px;
+  background: linear-gradient(135deg, #ffffff 0%, #f7f8fa 100%);
+  border: 1px solid rgba(216,162,74,0.25);
+  border-left: 5px solid #D8A24A;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(43,76,92,0.08);
+  font-family: 'Newsreader', serif;
+  font-size: clamp(25px, 4vw, 32px);
+  font-style: italic;
+  line-height: 1.4;
+  color: #2B4C5C;
+}
+
+.signature-mark {
+  position: absolute;
+  top: -23px;
+  left: 25px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #D8A24A;
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 38px;
+  font-style: normal;
+  line-height: 55px;
+  text-align: center;
+  box-shadow: 0 7px 18px rgba(216,162,74,0.28);
+}
+
+.signature-caption {
+  display: block;
+  margin-top: 16px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #D8A24A;
+}
+
+/* ===== PROJECT CARDS ===== */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  position: relative;
+  padding: 26px;
+  background: white;
+  border: 1px solid rgba(43,76,92,0.09);
+  border-radius: 17px;
+  box-shadow: 0 10px 28px rgba(43,76,92,0.06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(43,76,92,0.11);
+}
+
+.project-number {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2B4C5C;
+  color: white;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.project-card h3 {
+  margin: 0 0 10px;
+}
+
+.project-card p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* ===== SKILLS ===== */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+.skill-card {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(43,76,92,0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(43,76,92,0.05);
+}
+
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(216,162,74,0.13);
+  color: #B17D20;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.skill-card strong {
+  color: #2B4C5C;
+  font-size: 15px;
+}
+
+.skill-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 10px 0 0;
+}
+
+/* ===== CONNECT ===== */
+
+.connect-card {
+  padding: 32px;
+  background: linear-gradient(135deg, #2B4C5C, #436B80);
+  color: white;
+  border-radius: 22px;
+  box-shadow: 0 16px 35px rgba(43,76,92,0.16);
+}
+
+.connect-card h2 {
+  color: white;
+  margin-top: 0;
+}
+
+.connect-card p {
+  max-width: 650px;
+  line-height: 1.8;
+  opacity: .9;
+}
+
+.connect-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.connect-links .cta {
+  background: white;
+  color: #2B4C5C;
+  border: none;
+}
+
+.connect-links .cta:hover {
+  background: #f7f8fa;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+
+  .about-hero {
+    padding-top: 35px;
+  }
+
+  .bio-card {
+    padding: 24px;
+  }
+
+  .signature-quote {
+    padding: 34px 24px 25px 28px;
+  }
+
+  .connect-card {
+    padding: 25px;
+  }
+
+}
+
+</style>
+
 </head>
+
 <body>
+
+<!-- ===== NAVIGATION ===== -->
 
 <nav>
   <a href="index.html" class="brand">Jackline Mutheu</a>
+
   <div class="links">
     <a href="index.html">Home</a>
     <a href="case-studies.html">Case Studies</a>
@@ -22,63 +299,307 @@
 </nav>
 
 <main>
-  <h1 style="font-size:32px; margin-bottom: 12px;">About</h1>
-  <p style="color:#2B4C5C; margin-bottom: 40px; font-size: 16px;">Building practical machine learning systems that turn messy search data into clear, evidence-based decisions.</p>
 
-  <section>
-    <p style="font-size: 17px;">I'm a Machine Learning intern at FlyRank, working across the ML and AI Fluency tracks. I got into this because I like the moment a messy pile of data turns into a decision someone can actually act on — not a black-box score, something you can open up and argue with.</p>
-    <p style="font-size: 17px; margin-top: 16px;">Before I trust a model, I want to know what it's leaning on and where it's wrong. That's why every project on this site starts with a baseline I can beat honestly, and a data contract naming exactly what could quietly leak the answer. I'd rather report an uncomfortable number than a clean one I can't fully explain.</p>
+<!-- ===== HERO ===== -->
 
-    <blockquote style="margin-top:24px; padding:20px 24px; border-left:3px solid var(--accent); background:white; font-family:'Newsreader',serif; font-style:italic; font-size:22px; color:var(--main);">
-      Evidence before confidence.
-    </blockquote>
-  </section>
+<section class="about-hero">
 
-  <section>
-    <h2>Currently working on</h2>
-    <div class="case">
-      <h3>Refresh / Content Opportunity Scoring</h3>
-      <p>An evidence-based ranking system prioritizing pages for review, built on a transparent baseline before any model touched the data.</p>
-    </div>
-    <div class="case">
-      <h3>Baseline Action Score</h3>
-      <p>A hand-written scoring rule ranking pages by CTR-fix opportunity, checked against real signals before being trusted.</p>
-    </div>
-    <div class="case">
-      <h3>Workflow automation</h3>
-      <p>A four-step research and writing pipeline (Gather → Synthesize → Draft → Review), built as a Claude Project.</p>
-    </div>
-  </section>
+  <div class="about-label">
+    About me
+  </div>
 
-  <section>
-    <h2>Skills</h2>
-    <div class="icon-row">
-      <img src="icon-set-final.svg" alt="Notebook, trend, review, and data-node icons" style="height:60px;">
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; font-size: 15px;">
-      <div>
-        <strong style="color:var(--main);">Machine Learning</strong><br>
-        Feature engineering<br>Model evaluation<br>Baseline systems<br>Decision support
-      </div>
-      <div>
-        <strong style="color:var(--main);">Programming</strong><br>
-        Python · Pandas<br>NumPy · scikit-learn
-      </div>
-      <div>
-        <strong style="color:var(--main);">AI & workflow</strong><br>
-        Claude Projects<br>Prompt engineering<br>Technical writing
-      </div>
-      <div>
-        <strong style="color:var(--main);">Tools</strong><br>
-        Google Colab · Git<br>GitHub · Jupyter
-      </div>
-    </div>
-  </section>
+  <h1>
+    Building AI that people<br>
+    can actually understand.
+  </h1>
+
+  <p class="about-subtitle">
+    I'm Jackline Mutheu — a Machine Learning Intern at FlyRank,
+    building practical systems that turn messy search data into
+    clear, evidence-based decisions.
+  </p>
+
+</section>
+
+<!-- ===== BIO ===== -->
+
+<section>
+
+  <div class="bio-card">
+
+```
+<p>
+  I'm a <strong>Machine Learning Intern at FlyRank</strong>,
+  working across the Machine Learning and General AI Fluency tracks.
+  I got into this because I enjoy the moment when a messy pile of
+  data becomes a decision someone can actually act on — not a
+  black-box score, but something you can open, question, and improve.
+</p>
+
+<p>
+  Before I trust a model, I want to understand what it is leaning on
+  and where it can be wrong. That's why my projects start with
+  transparent baselines, careful validation, and explicit checks
+  for data leakage. I'd rather report an uncomfortable number than
+  a clean one I cannot fully explain.
+</p>
+
+<p>
+  Through the FlyRank internship, I've worked on content opportunity
+  scoring, baseline ranking systems, feature engineering, model
+  evaluation, AI-assisted research workflows, and technical
+  documentation.
+</p>
+
+<!-- SIGNATURE QUOTE -->
+
+<blockquote class="signature-quote">
+
+  <span class="signature-mark">“</span>
+
+  Evidence before confidence.
+
+  <span class="signature-caption">
+    — My approach to machine learning
+  </span>
+
+</blockquote>
+```
+
+  </div>
+
+</section>
+
+<!-- ===== CURRENTLY WORKING ON ===== -->
+
+<section>
+
+  <h2>Currently working on</h2>
+
+  <div class="project-grid">
+
+```
+<div class="project-card">
+
+  <span class="project-number">01</span>
+
+  <h3>Content Opportunity Scoring</h3>
+
+  <p>
+    An evidence-based ranking system prioritizing pages for review,
+    built on a transparent baseline before any model touched the data.
+  </p>
+
+</div>
+
+<div class="project-card">
+
+  <span class="project-number">02</span>
+
+  <h3>Baseline Action Score</h3>
+
+  <p>
+    A hand-written scoring rule ranking pages by CTR-fix opportunity,
+    checked against real signals before being trusted.
+  </p>
+
+</div>
+
+<div class="project-card">
+
+  <span class="project-number">03</span>
+
+  <h3>AI Workflow Automation</h3>
+
+  <p>
+    A research and writing pipeline built around
+    Gather → Synthesize → Draft → Review using Claude Projects.
+  </p>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- ===== SKILLS ===== -->
+
+<section>
+
+  <h2>Skills & tools</h2>
+
+  <div class="icon-row" style="margin-bottom:25px;">
+
+```
+<img
+  src="icon-set-final.svg"
+  alt="Notebook, trend, review, and data-node icons"
+  style="height:60px;">
+```
+
+  </div>
+
+  <div class="skills-grid">
+
+```
+<div class="skill-card">
+
+  <div class="skill-icon">⌁</div>
+
+  <strong>Machine Learning</strong>
+
+  <p>
+    Feature engineering<br>
+    Model evaluation<br>
+    Baseline systems<br>
+    Decision support
+  </p>
+
+</div>
+
+<div class="skill-card">
+
+  <div class="skill-icon">⌘</div>
+
+  <strong>Programming</strong>
+
+  <p>
+    Python<br>
+    Pandas<br>
+    NumPy<br>
+    scikit-learn
+  </p>
+
+</div>
+
+<div class="skill-card">
+
+  <div class="skill-icon">✦</div>
+
+  <strong>AI & Workflow</strong>
+
+  <p>
+    Claude Projects<br>
+    Prompt engineering<br>
+    Technical writing<br>
+    Documentation
+  </p>
+
+</div>
+
+<div class="skill-card">
+
+  <div class="skill-icon">◈</div>
+
+  <strong>Tools</strong>
+
+  <p>
+    Google Colab<br>
+    Git & GitHub<br>
+    Jupyter<br>
+    VS Code
+  </p>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- ===== CONNECT ===== -->
+
+<section>
+
+  <div class="connect-card">
+
+```
+<h2>Let's connect</h2>
+
+<p>
+  Interested in the work I'm building? Explore my projects,
+  review the code, connect with me on LinkedIn, or book a conversation.
+</p>
+
+<div class="connect-links">
+
+  <a
+    class="cta"
+    href="https://www.linkedin.com/in/jackline-mutheu-27ab01290/"
+    target="_blank"
+    rel="noopener">
+    LinkedIn →
+  </a>
+
+  <a
+    class="cta"
+    href="https://github.com/Jacky-gif310/flyrank-ml-internship"
+    target="_blank"
+    rel="noopener">
+    GitHub →
+  </a>
+
+  <a
+    class="cta"
+    href="Jackline_Mutheu_CV.pdf"
+    target="_blank"
+    rel="noopener">
+    CV →
+  </a>
+
+  <a
+    class="cta"
+    href="https://calendly.com/mutheujackline976/30min"
+    target="_blank"
+    rel="noopener">
+    Book a call →
+  </a>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- ===== FUTURE ===== -->
+
+<section>
+
+  <h2>What's next</h2>
+
+  <p style="max-width:700px; line-height:1.8; font-size:15px;">
+
+```
+This portfolio will continue to grow as the FlyRank internship
+progresses. Future updates will include capstone work, experiments,
+technical write-ups, and lessons learned from building practical
+machine learning and AI systems.
+```
+
+  </p>
+
+</section>
+
 </main>
 
+<!-- ===== FOOTER ===== -->
+
 <footer>
-  <a class="cta primary" href="https://github.com/Jacky-gif310/flyrank-ml-internship" target="_blank" rel="noopener">Review my GitHub</a>
-  <p class="style-note">Newsreader + IBM Plex Sans · #2B4C5C · #14161A · #F7F8FA · #D8A24A</p>
+
+<a
+ class="cta primary"
+ href="https://github.com/Jacky-gif310/flyrank-ml-internship"
+ target="_blank"
+ rel="noopener">
+Review my GitHub → </a>
+
+  <p class="style-note">
+    Newsreader + IBM Plex Sans ·
+    #2B4C5C · #14161A · #F7F8FA · #D8A24A
+  </p>
+
 </footer>
 
 </body>
