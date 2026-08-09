@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Jackline Mutheu</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .cv-header { background: var(--main); color: white; padding: 40px 48px; border-radius: 6px; margin-bottom: 32px; }
+  .cv-header h1 { color: white; font-size: 34px; margin-bottom: 6px; }
+  .cv-header .tagline { color: var(--accent); font-style: italic; font-family: 'Newsreader', serif; font-size: 18px; margin-bottom: 14px; }
+  .cv-header .contact { color: #E3EAEE; font-size: 14px; line-height: 1.7; }
+  .cv-header .contact a { color: #E3EAEE; text-decoration: underline; }
+  .cv-section { margin-bottom: 32px; }
+  .cv-section h2 { font-size: 19px; border-bottom: 2px solid var(--accent); padding-bottom: 6px; margin-bottom: 16px; font-style: normal; font-weight: 600; font-family: 'IBM Plex Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.03em; color: var(--main); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 10px; }
+  .skill-box { background: var(--bg); padding: 12px 14px; border-radius: 4px; font-size: 14px; }
+  .job { margin-bottom: 18px; }
+  .job-title { font-weight: 600; color: var(--text); }
+  .job-dates { font-size: 13px; color: var(--main); font-style: italic; font-weight: 600; }
+  .cv-section ul { margin-left: 20px; margin-top: 6px; }
+  .cv-section li { margin-bottom: 6px; font-size: 15px; }
+  .print-note { text-align:center; font-size: 13px; color:#4A4E57; margin-bottom: 24px; }
+  @media print { nav, footer, .print-note { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">Jackline Mutheu</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="process.html">Process</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<main>
+  <div class="cv-header">
+    <h1>Jackline Mutheu</h1>
+    <div class="tagline">Machine Learning · Data Analysis · AI Fluency</div>
+    <div class="contact">
+      Makueni, Kenya · 0746 858 196 · mutheujackline976@gmail.com<br>
+      <a href="https://www.linkedin.com/in/jackline-mutheu-27ab01290/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/Jacky-gif310" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="index.html">Portfolio</a>
+    </div>
+  </div>
+
+  <p class="print-note">Prefer a file? <a href="Jackline_Mutheu_CV.pdf">Download as PDF →</a></p>
+
+  <div class="cv-section">
+    <h2>Profile</h2>
+    <p style="font-size:15px;">Statistics and IT graduate currently completing a Machine Learning internship at FlyRank AI, building end-to-end ranking and scoring models on production-scale search data. Combines a solid analytical foundation (SQL, PHP, data visualization) with hands-on Python/ML experience (pandas, scikit-learn, DuckDB, Hugging Face datasets) and a deployed GitHub-based project portfolio.</p>
+  </div>
+
+  <div class="cv-section">
+    <h2>Key Capabilities</h2>
+    <div class="skills-grid">
+      <div class="skill-box">Machine Learning (scikit-learn, Random Forest, Logistic Regression)</div>
+      <div class="skill-box">Python for Data Analysis (pandas, DuckDB)</div>
+      <div class="skill-box">SQL / MySQL Database Management</div>
+      <div class="skill-box">Data Visualization & Dashboards (Chart.js, Google Sheets)</div>
+      <div class="skill-box">Web Development (PHP, JavaScript, HTML, CSS)</div>
+      <div class="skill-box">Git / GitHub & GitHub Pages Deployment</div>
+      <div class="skill-box">Prompt Engineering & Agent Design</div>
+      <div class="skill-box">Data Validation & Reporting</div>
+      <div class="skill-box">Model Context Protocol (MCP)</div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <h2>Experience</h2>
+    <div class="job">
+      <div class="job-title">Machine Learning Intern — FlyRank AI (Remote)</div>
+      <div class="job-dates">2025 – Present</div>
+      <ul>
+        <li>Built and evaluated a Refresh / Content Opportunity Scoring capstone — a binary classification and ranking model over a 30,000-row production search-performance dataset, comparing Logistic Regression and Random Forest (Random Forest winning on Precision@50).</li>
+        <li>Engineered a full ML pipeline: data contracts, leakage-trap testing, feature justification, baseline scoring, and model evaluation notebooks, using DuckDB against a Hugging Face–hosted data warehouse.</li>
+        <li>Completed a parallel AI Fluency track covering prompt engineering, agent design specs, and automation workflow builds.</li>
+        <li>Designed and deployed a 4-page personal portfolio site (case studies, process, about) to GitHub Pages, showcasing capstone metrics and project write-ups.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-title">Attachment Trainee — National Hospital Insurance Fund (NHIF) Kenya, Wote, Makueni Branch</div>
+      <div class="job-dates">20 May 2024 – 9 Aug 2024</div>
+      <ul>
+        <li>Assisted in managing and validating digital health insurance records, ensuring data accuracy and consistency.</li>
+        <li>Supported system data entry processes and helped organize digital records into structured datasets.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <h2>Selected Projects</h2>
+    <div class="job">
+      <div class="job-title">Refresh / Content Opportunity Scoring — FlyRank AI Capstone</div>
+      <ul><li>Framed a real search-performance dataset as a ranking/scoring problem; built baseline and modeling notebooks with clear feature justification and leakage checks.</li></ul>
+    </div>
+    <div class="job">
+      <div class="job-title">Survey Analysis Tool — Web Application</div>
+      <ul><li>Built a PHP/MySQL/JavaScript survey platform with interactive Chart.js dashboards and optimized relational database queries.</li></ul>
+    </div>
+    <div class="job">
+      <div class="job-title">AI Business Feedback Generator & Data Analysis Projects — AWS PartyRock</div>
+      <ul><li>Built generative-AI applications for business feedback and data analysis, designing prompts for consistent, relevant outputs.</li></ul>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <h2>Education</h2>
+    <p style="font-size:15px;"><strong>BSc, Statistics and Information Technology, Second Class Honours (Upper Division)</strong><br>
+    <span style="color:#4A4E57; font-size:13px;">Co-operative University of Kenya · September 2022 – April 2025</span></p>
+    <p style="font-size:14px; margin-top:8px;">K.C.S.E, Grade B- — Vulueni Secondary School, 2021</p>
+  </div>
+
+  <div class="cv-section">
+    <h2>Certifications & Learning</h2>
+    <ul>
+      <li>AWS Certified AI/ML Practitioner — Amazon Web Services (AWS)</li>
+      <li>AWS AI & ML Scholars Program (with Udacity) — Future AWS AI Programmer Nanodegree track (Python, PyTorch, ML model training)</li>
+      <li>Anthropic Academy — 20 completed certificates (100%), including: AI Fluency: Framework &amp; Foundations, Claude 101, Introduction to Claude Cowork, AI Capabilities and Limitations, Claude Platform 101, Building with the Claude API, Claude Code 101, Claude Code in Action, Introduction to Model Context Protocol, MCP: Advanced Topics, Introduction to Agent Skills, Introduction to Subagents, Claude with Amazon Bedrock, Claude with Google Cloud's Vertex AI, and additional AI Fluency specializations.</li>
+    </ul>
+  </div>
+
+  <div class="cv-section">
+    <h2>Languages</h2>
+    <p style="font-size:15px;">English and Swahili (fluent)</p>
+  </div>
+
+  <div class="cv-section">
+    <h2>Referees</h2>
+    <p style="font-size:14px; margin-bottom:6px;">Mr. Robert Munyao — National Hospital Insurance Fund (NHIF) — 0716726235 — ROBERTMUNYAO76@gmail.com</p>
+    <p style="font-size:14px; margin-bottom:6px;">Madam Eunice Moyo — Vulueni Secondary School — 0728054137 — eunicenzembi16@gmail.com</p>
+    <p style="font-size:14px;">Mr. Joseph Munywoki — Vulueni Secondary School — 0720812599 — jomunywoki@gmail.com</p>
+  </div>
+</main>
+
+<footer>
+  <a class="cta primary" href="Jackline_Mutheu_CV.pdf">Download CV (PDF)</a>
+  <p class="style-note">Newsreader + IBM Plex Sans · #2B4C5C · #14161A · #F7F8FA · #D8A24A</p>
+</footer>
+
+</body>
+</html>
