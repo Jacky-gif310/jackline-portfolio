@@ -25,6 +25,19 @@
   .cv-section ul { margin-left: 20px; margin-top: 6px; }
   .cv-section li { margin-bottom: 6px; font-size: 15px; }
   .print-note { text-align:center; font-size: 13px; color:#4A4E57; margin-bottom: 24px; }
+  .print-note button, footer button.cta {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+  }
+  .print-note button {
+    color: var(--main);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    padding: 0;
+  }
   @media print { nav, footer, .print-note { display: none; } }
 </style>
 </head>
@@ -32,6 +45,10 @@
 
 <nav>
   <a href="index.html" class="brand">Jackline Mutheu</a>
+
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu"><span></span></label>
+
   <div class="links">
     <a href="index.html">Home</a>
     <a href="case-studies.html">Case Studies</a>
@@ -52,7 +69,7 @@
     </div>
   </div>
 
-  <p class="print-note">Prefer a file? <a href="Jackline_Mutheu_CV.pdf">Download as PDF →</a></p>
+  <p class="print-note">Prefer a file? <button onclick="window.print()">Download as PDF →</button></p>
 
   <div class="cv-section">
     <h2>Profile</h2>
@@ -142,7 +159,7 @@
 </main>
 
 <footer>
-  <a class="cta primary" href="Jackline_Mutheu_CV.pdf">Download CV (PDF)</a>
+  <button class="cta primary" onclick="window.print()">Download CV (PDF)</button>
   <p class="style-note">Newsreader + IBM Plex Sans · #2B4C5C · #14161A · #F7F8FA · #D8A24A</p>
 </footer>
 
