@@ -10,6 +10,154 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<style>
+  /* ---- Case Studies page: metrics table, plain-terms callout, pipeline diagram ---- */
+
+  .metrics-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(20, 22, 26, 0.08), 0 0 0 1px rgba(20, 22, 26, 0.06);
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  .metrics-table th {
+    background: #2B4C5C;
+    color: #F7F8FA;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    padding: 12px 16px;
+  }
+
+  .metrics-table td {
+    padding: 11px 16px;
+    font-size: 14.5px;
+    color: #14161A;
+    background: #FFFFFF;
+    border-top: 1px solid #ECEEF1;
+  }
+
+  .metrics-table tr:nth-child(even) td {
+    background: #F7F8FA;
+  }
+
+  .metrics-table td:first-child {
+    font-weight: 500;
+    color: #2B4C5C;
+  }
+
+  .metrics-table tr.best-row td {
+    background: #FBF2E2;
+  }
+
+  .metrics-table tr.best-row td:first-child {
+    color: #8A6116;
+    font-weight: 600;
+  }
+
+  .metrics-table tr.best-row td:first-child::after {
+    content: "★ best on Precision@50";
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: #B4831F;
+    margin-top: 2px;
+  }
+
+  .metrics-legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: #6B7078;
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin-bottom: 28px;
+  }
+
+  .metrics-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .metrics-legend .swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .callout-plain {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #F7F8FA;
+    border-left: 3px solid #D8A24A;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: -4px 0 24px;
+  }
+
+  .callout-plain .icon {
+    font-size: 17px;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+
+  .callout-plain p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #33363D;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  .callout-plain strong {
+    color: #2B4C5C;
+  }
+
+  .callout-plain .stat {
+    color: #8A6116;
+    font-weight: 600;
+  }
+
+  /* Pipeline diagram */
+  .pipeline-wrap {
+    margin: 28px 0 32px;
+    padding: 22px 20px 18px;
+    background: #F7F8FA;
+    border-radius: 12px;
+    border: 1px solid #ECEEF1;
+  }
+
+  .pipeline-label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6B7078;
+    margin: 0 0 14px 2px;
+  }
+
+  .pipeline-wrap svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .metrics-table { font-size: 13px; }
+    .metrics-table th, .metrics-table td { padding: 9px 10px; }
+    .metrics-table tr.best-row td:first-child::after { font-size: 10px; }
+  }
+</style>
 </head>
 <body>
 
@@ -35,14 +183,70 @@
 
       <p><strong>What I did:</strong> I framed the problem as a proxy classification task — a page counts as an opportunity if its search trend is declining and it's sitting outside the top 10 positions. I documented a data contract up front, naming exactly which signals were safe to use at decision time and which ones would leak the answer. I built a hand-written baseline first (a CTR-gap rule, checked against two real signals — one confirmed, one honestly mixed) before touching a trained model at all.</p>
 
+      <div class="pipeline-wrap">
+        <p class="pipeline-label">How the capstone was built, in order</p>
+        <svg viewBox="0 0 920 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pipeline: Data contract, then hand-built baseline, then leakage check, then trained models, then human review queue">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#B7BEC6"></path>
+            </marker>
+          </defs>
+
+          <!-- connectors -->
+          <line x1="172" y1="70" x2="212" y2="70" stroke="#B7BEC6" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <line x1="356" y1="70" x2="396" y2="70" stroke="#B7BEC6" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <line x1="558" y1="70" x2="598" y2="70" stroke="#B7BEC6" stroke-width="1.5" marker-end="url(#arrow)"></line>
+          <line x1="742" y1="70" x2="782" y2="70" stroke="#B7BEC6" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+          <!-- 1: Data Contract -->
+          <rect x="8" y="24" width="164" height="92" rx="10" fill="#FFFFFF" stroke="#2B4C5C" stroke-width="1.5"></rect>
+          <text x="90" y="58" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#2B4C5C">Data Contract</text>
+          <text x="90" y="78" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#5A6068">Safe vs. leaky</text>
+          <text x="90" y="92" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#5A6068">signals defined</text>
+
+          <!-- 2: Baseline -->
+          <rect x="212" y="24" width="144" height="92" rx="10" fill="#FFFFFF" stroke="#2B4C5C" stroke-width="1.5"></rect>
+          <text x="284" y="58" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#2B4C5C">Hand-Built</text>
+          <text x="284" y="74" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#2B4C5C">Baseline</text>
+          <text x="284" y="94" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#5A6068">CTR-gap rule</text>
+
+          <!-- 3: Leakage check -->
+          <rect x="396" y="20" width="162" height="100" rx="10" fill="#FBF2E2" stroke="#D8A24A" stroke-width="1.5"></rect>
+          <text x="477" y="52" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#8A6116">Leakage Check</text>
+          <text x="477" y="70" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#7A5A18">2 features caught</text>
+          <text x="477" y="84" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#7A5A18">&amp; dropped</text>
+          <text x="477" y="102" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="9.5" font-style="italic" fill="#9C7A2E">documented, not hidden</text>
+
+          <!-- 4: Trained models -->
+          <rect x="598" y="24" width="144" height="92" rx="10" fill="#FFFFFF" stroke="#2B4C5C" stroke-width="1.5"></rect>
+          <text x="670" y="58" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#2B4C5C">Trained Models</text>
+          <text x="670" y="76" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#5A6068">Logistic Regr.</text>
+          <text x="670" y="90" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#5A6068">Random Forest</text>
+
+          <!-- 5: Human review -->
+          <rect x="782" y="24" width="132" height="92" rx="10" fill="#2B4C5C"></rect>
+          <text x="848" y="58" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#F7F8FA">Human</text>
+          <text x="848" y="76" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#F7F8FA">Review Queue</text>
+          <text x="848" y="94" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#CBD6DC">decision support</text>
+        </svg>
+      </div>
+
       <p><strong>The catch that mattered:</strong> my first pass at model features included two columns that looked like reasonable trend signals. Checking the data dictionary confirmed they were literally the two numbers used to compute the label itself — I dropped them and reran everything. Scores came down from an inflated result to a more honest one. That drop is documented in the notebook, not hidden.</p>
 
       <table class="metrics-table">
         <tr><th>Model</th><th>ROC-AUC</th><th>Precision@50</th><th>Precision@20</th></tr>
         <tr><td>Hand-written baseline</td><td>0.536</td><td>0.040</td><td>0.000</td></tr>
         <tr><td>Logistic Regression</td><td>0.600</td><td>0.260</td><td>0.350</td></tr>
-        <tr><td>Random Forest</td><td>0.573</td><td>0.320</td><td>0.350</td></tr>
+        <tr class="best-row"><td>Random Forest</td><td>0.573</td><td>0.320</td><td>0.350</td></tr>
       </table>
+      <div class="metrics-legend">
+        <span><span class="swatch" style="background:#D8A24A;"></span>Highlighted row = best Precision@50, the metric that matters most for a prioritized queue</span>
+      </div>
+
+      <div class="callout-plain">
+        <span class="icon">💡</span>
+        <p><strong>In plain terms:</strong> Precision@50 of <span class="stat">0.320</span> means roughly 1 in 3 pages the model flags as top-50 priorities are genuine opportunities — versus the baseline's <span class="stat">0.040</span>, which is worse than picking pages at random (the validation set's real opportunity rate was <span class="stat">0.232</span>). The trained model isn't perfect, but it's a meaningfully better starting point for a human reviewer than the hand-written rule was.</p>
+      </div>
 
       <p><strong>Outcome:</strong> the baseline actually performed worse than picking pages at random once evaluated on the real target — a useful, honest finding, not a failure to hide. Both trained models beat it clearly. Random Forest wins on the metric that matters most for a prioritized queue (Precision@50) despite a lower overall ranking score than Logistic Regression — I reported both numbers instead of picking whichever favored one model.</p>
 
