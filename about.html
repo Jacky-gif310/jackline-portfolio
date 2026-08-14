@@ -398,6 +398,110 @@ section[id] {
   background: #f7f8fa;
 }
 
+/* ===== WEEK 8 CONTACT FORM ===== */
+.contact-form {
+  max-width: 680px;
+  margin-top: 28px;
+}
+.contact-field {
+  margin-bottom: 18px;
+}
+.contact-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  color: white;
+}
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 12px;
+  background: rgba(255,255,255,.10);
+  color: white;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s ease,
+              background .2s ease,
+              box-shadow .2s ease;
+}
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: rgba(255,255,255,.65);
+}
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: #D8A24A;
+  background: rgba(255,255,255,.14);
+  box-shadow: 0 0 0 3px rgba(216,162,74,.15);
+}
+.contact-field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+.contact-submit {
+  border: none;
+  border-radius: 999px;
+  padding: 13px 24px;
+  background: #D8A24A;
+  color: white;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s ease,
+              box-shadow .2s ease,
+              background .2s ease;
+}
+.contact-submit:hover {
+  background: #c9933e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.16);
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 28px;
+}
+.contact-links a {
+  color: white;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: .9;
+}
+.contact-links a:hover {
+  color: #D8A24A;
+  opacity: 1;
+}
+.contact-status {
+  margin-top: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.9);
+}
+@media (max-width: 600px) {
+  .contact-form {
+    width: 100%;
+  }
+  .contact-field input,
+  .contact-field textarea {
+    font-size: 16px;
+  }
+  .contact-submit {
+    width: 100%;
+    padding: 15px 20px;
+  }
+}
+
 /* ===== MOBILE ===== */
 
 @media (max-width: 780px) {
@@ -477,6 +581,10 @@ section[id] {
 
   .connect-card {
     padding: 25px;
+  }
+
+  .contact-form {
+    max-width: 100%;
   }
 
 }
@@ -724,7 +832,8 @@ section[id] {
 
     <p>
       Interested in the work I'm building? Explore my projects,
-      review the code, connect with me on LinkedIn, or book a conversation.
+      review the code, connect with me on LinkedIn, book a conversation,
+      or send me a message below.
     </p>
 
     <div class="connect-links">
@@ -762,6 +871,45 @@ section[id] {
       </a>
 
     </div>
+
+    <!-- CONTACT FORM — WEEK 8 -->
+    <form
+      id="contact-form"
+      action="https://formspree.io/f/xljrllvk"
+      method="POST"
+      class="contact-form">
+      <div class="contact-field">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your name"
+          required>
+      </div>
+      <div class="contact-field">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          required>
+      </div>
+      <div class="contact-field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          placeholder="Tell me a little about what you'd like to discuss..."
+          required></textarea>
+      </div>
+      <button type="submit" class="contact-submit">
+        Send message →
+      </button>
+      <p id="contact-status" class="contact-status" aria-live="polite"></p>
+    </form>
 
   </div>
 
@@ -804,6 +952,34 @@ section[id] {
   </p>
 
 </footer>
+
+<script>
+  const contactForm = document.getElementById('contact-form');
+  const contactStatus = document.getElementById('contact-status');
+
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+    contactStatus.textContent = 'Sending...';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        contactStatus.textContent = "Thanks — your message reached me. I'll reply soon.";
+        contactForm.reset();
+      } else {
+        contactStatus.textContent = "Something went wrong — please try again.";
+      }
+    } catch (error) {
+      contactStatus.textContent = "Network error — please try again.";
+    }
+  });
+</script>
 
 </body>
 </html>
