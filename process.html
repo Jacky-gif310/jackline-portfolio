@@ -4,12 +4,152 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Process — Jackline Mutheu</title>
+<meta name="description" content="The judgment calls behind Jackline Mutheu's FlyRank ML portfolio — design rejections, stack decisions, and reading a model's own mistakes honestly.">
+<meta property="og:title" content="Process — Jackline Mutheu">
+<meta property="og:description" content="The reasoning behind the build — what was rejected, what was chosen, and why.">
+<meta property="og:image" content="https://jacky-gif310.github.io/jackline-portfolio/social-preview.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jacky-gif310.github.io/jackline-portfolio/process.html">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* --- Process page enhancements: scoped, additive to style.css --- */
+  :root{
+    --p-main:#2B4C5C;
+    --p-ink:#14161A;
+    --p-bg:#F7F8FA;
+    --p-accent:#D8A24A;
+  }
+
+  .case{ position:relative; padding-left:22px; }
+  .case::before{
+    content:"";
+    position:absolute; left:0; top:4px; bottom:4px; width:3px;
+    border-radius:2px;
+    background:var(--p-accent);
+    opacity:.55;
+  }
+  .case h3{
+    display:flex; align-items:center; gap:10px;
+  }
+  .case h3 .fork-icon{ flex:0 0 auto; }
+
+  /* fork-in-the-road motif: one icon language reused for every judgment call on the page */
+  .fork-icon{ width:20px; height:20px; }
+  .fork-icon path{ fill:none; stroke:var(--p-accent); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .fork-icon circle{ fill:var(--p-accent); }
+
+  /* --- Stack decision diagram --- */
+  .stack-diagram{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin:20px 0 6px;
+  }
+  .stack-card{
+    border:1px solid #E1E4E9;
+    border-radius:12px;
+    padding:16px 14px;
+    background:#fff;
+    font-family:'IBM Plex Sans',sans-serif;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .stack-card:hover{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(20,22,26,0.06); }
+  .stack-card .label{
+    font-size:13px; font-weight:600; color:var(--p-ink);
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    margin-bottom:6px;
+  }
+  .stack-card .note{ font-size:12.5px; color:#5B6069; line-height:1.45; }
+  .stack-card.chosen{
+    border-color:var(--p-accent);
+    background:linear-gradient(180deg,#FFFDF8, #ffffff);
+    box-shadow:0 1px 0 var(--p-accent) inset;
+  }
+  .stack-card.chosen .label{ color:var(--p-main); }
+  .badge{
+    font-size:10.5px; font-weight:600; letter-spacing:.02em;
+    padding:2px 8px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .badge.considered{ background:#EEF0F3; color:#767B85; }
+  .check-dot{ width:16px; height:16px; flex:0 0 auto; }
+  .check-dot circle{ fill:var(--p-accent); }
+  .check-dot path{ stroke:#fff; stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  @media (max-width:640px){
+    .stack-diagram{ grid-template-columns:1fr; }
+  }
+
+  /* --- Workflow pipeline diagram --- */
+  .workflow-diagram{
+    margin:22px 0 8px;
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    flex-wrap:wrap;
+  }
+  .workflow-step{
+    flex:1 1 0;
+    min-width:140px;
+    background:#fff;
+    border:1px solid #E1E4E9;
+    border-radius:12px;
+    padding:14px 14px 12px;
+    position:relative;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .workflow-step + .workflow-step{ margin-left:14px; }
+  .workflow-step .step-eyebrow{
+    font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--p-accent); font-weight:600; margin-bottom:6px;
+  }
+  .workflow-step .step-title{
+    font-family:'Newsreader',serif; font-style:italic;
+    font-size:17px; color:var(--p-main); margin-bottom:4px;
+  }
+  .workflow-step .step-desc{ font-size:12px; color:#5B6069; line-height:1.4; }
+  .workflow-arrow{
+    display:flex; align-items:center; justify-content:center;
+    width:28px; flex:0 0 auto; color:var(--p-accent);
+  }
+  .workflow-arrow svg{ width:16px; height:16px; }
+  .workflow-arrow path{ stroke:var(--p-accent); stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  @media (max-width:760px){
+    .workflow-diagram{ flex-direction:column; }
+    .workflow-step + .workflow-step{ margin-left:0; margin-top:14px; }
+    .workflow-arrow{ width:auto; height:22px; transform:rotate(90deg); margin:2px auto; }
+  }
+
+  /* --- Rejected vs chosen visual swatch --- */
+  .swatch-row{
+    display:flex; gap:16px; align-items:center; margin:18px 0 4px; flex-wrap:wrap;
+  }
+  .swatch{
+    flex:1 1 180px;
+    border-radius:12px;
+    border:1px solid #E1E4E9;
+    background:#fff;
+    padding:12px;
+    text-align:center;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .swatch svg{ display:block; margin:0 auto 8px; }
+  .swatch .swatch-label{ font-size:12px; font-weight:600; }
+  .swatch.rejected .swatch-label{ color:#8A8F98; }
+  .swatch.rejected{ opacity:.75; }
+  .swatch.chosen{ border-color:var(--p-accent); }
+  .swatch.chosen .swatch-label{ color:var(--p-main); }
+  .swatch-arrow{ flex:0 0 auto; color:#B7BBC2; }
+  .swatch-arrow svg{ width:20px; height:20px; }
+  .swatch-arrow path{ stroke:currentColor; stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+</style>
 </head>
 <body>
 
@@ -31,17 +171,78 @@
     <h2>Judgment in practice</h2>
 
     <div class="case">
-      <h3>Rejecting the obvious choice</h3>
+      <h3>
+        <svg class="fork-icon" viewBox="0 0 24 24"><path d="M12 3v6M12 9c0 3-5 3-5 7M12 9c0 3 5 3 5 7M7 16v4M17 16v4"/><circle cx="12" cy="3" r="1.4"/></svg>
+        Rejecting the obvious choice
+      </h3>
       <p>When building this site's visual identity, I generated a network/node-graph texture as the hero graphic — the default "AI" visual. I rejected it: it's become a design cliché that suggests "artificial intelligence" generically rather than communicating anything about my actual work, and its density fought the calm, understated mood the rest of the kit is built around. I used a single trend-line graphic instead — it echoes the actual signal (search performance trend) the capstone is scoring.</p>
+
+      <div class="swatch-row">
+        <div class="swatch rejected">
+          <svg width="120" height="70" viewBox="0 0 120 70">
+            <g stroke="#B7BBC2" stroke-width="1.3">
+              <line x1="18" y1="14" x2="52" y2="30"/>
+              <line x1="18" y1="14" x2="20" y2="52"/>
+              <line x1="52" y1="30" x2="20" y2="52"/>
+              <line x1="52" y1="30" x2="90" y2="16"/>
+              <line x1="52" y1="30" x2="86" y2="48"/>
+              <line x1="20" y1="52" x2="86" y2="48"/>
+              <line x1="90" y1="16" x2="86" y2="48"/>
+            </g>
+            <g fill="#B7BBC2">
+              <circle cx="18" cy="14" r="3"/>
+              <circle cx="52" cy="30" r="3"/>
+              <circle cx="20" cy="52" r="3"/>
+              <circle cx="90" cy="16" r="3"/>
+              <circle cx="86" cy="48" r="3"/>
+            </g>
+          </svg>
+          <div class="swatch-label">Node-graph texture</div>
+        </div>
+        <div class="swatch-arrow">
+          <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="swatch chosen">
+          <svg width="120" height="70" viewBox="0 0 120 70">
+            <polyline points="14,52 38,38 58,44 82,20 106,26" fill="none" stroke="#D8A24A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="106" cy="26" r="3.2" fill="#D8A24A"/>
+          </svg>
+          <div class="swatch-label">Single trend line</div>
+        </div>
+      </div>
     </div>
 
     <div class="case">
-      <h3>Choosing the boring stack on purpose</h3>
+      <h3>
+        <svg class="fork-icon" viewBox="0 0 24 24"><path d="M12 3v6M12 9c0 3-5 3-5 7M12 9c0 3 5 3 5 7M7 16v4M17 16v4"/><circle cx="12" cy="3" r="1.4"/></svg>
+        Choosing the boring stack on purpose
+      </h3>
       <p>For this site itself, I compared three build options — plain HTML + GitHub Pages, Jekyll, and React + Vercel with a live model demo — before choosing the simplest one. The more powerful option could have shown a live, interactive demo of the model, which was genuinely tempting. I didn't have a trained model to demo yet, so I chose not to build complexity in service of a capability I didn't actually have.</p>
+
+      <div class="stack-diagram">
+        <div class="stack-card chosen">
+          <div class="label">
+            <span>HTML + GitHub Pages</span>
+            <svg class="check-dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/><path d="M4.5 8.2l2.3 2.3L11.5 5.5"/></svg>
+          </div>
+          <div class="note">Matched what the site actually needed to do — no capability built ahead of what existed.</div>
+        </div>
+        <div class="stack-card">
+          <div class="label"><span>Jekyll</span><span class="badge considered">Considered</span></div>
+          <div class="note">More templating power than a five-page static site required.</div>
+        </div>
+        <div class="stack-card">
+          <div class="label"><span>React + Vercel</span><span class="badge considered">Considered</span></div>
+          <div class="note">Would've supported a live model demo — but there was no trained model yet to demo.</div>
+        </div>
+      </div>
     </div>
 
     <div class="case">
-      <h3>Reading my own model's mistakes out loud</h3>
+      <h3>
+        <svg class="fork-icon" viewBox="0 0 24 24"><path d="M12 3v6M12 9c0 3-5 3-5 7M12 9c0 3 5 3 5 7M7 16v4M17 16v4"/><circle cx="12" cy="3" r="1.4"/></svg>
+        Reading my own model's mistakes out loud
+      </h3>
       <p>The capstone case study includes real false positives and false negatives from the Random Forest model — not because they're impressive, but because they show where the model's assumptions break. Low-volume pages get flagged as "declining" when they may simply not have enough traffic for a trend to register either way; freshly-updated pages get missed because the model treats recency as a stand-in for "healthy" that doesn't always hold.</p>
     </div>
   </section>
@@ -49,7 +250,33 @@
   <section>
     <h2>Tools & workflow</h2>
     <p>I use a Claude Project configured with my Voice Card (practical, clear, honest, curious, evidence-based) as a standing instruction, so AI-assisted drafts already sound like me before I edit them, not after. My identity kit's style note lives there too, so new pages and visuals inherit it automatically instead of me re-specifying it each time.</p>
-    <p>For recurring research tasks, I use a four-step chained workflow (Gather → Synthesize → Draft → Review & Format) rather than one long prompt — narrow, single-purpose steps are easier to check and catch mistakes in than one prompt trying to do everything at once.</p>
+    <p>For recurring research tasks, I use a four-step chained workflow rather than one long prompt — narrow, single-purpose steps are easier to check and catch mistakes in than one prompt trying to do everything at once.</p>
+
+    <div class="workflow-diagram">
+      <div class="workflow-step">
+        <div class="step-eyebrow">Step 1</div>
+        <div class="step-title">Gather</div>
+        <div class="step-desc">Pull the raw source material together.</div>
+      </div>
+      <div class="workflow-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="workflow-step">
+        <div class="step-eyebrow">Step 2</div>
+        <div class="step-title">Synthesize</div>
+        <div class="step-desc">Find the pattern across the sources.</div>
+      </div>
+      <div class="workflow-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="workflow-step">
+        <div class="step-eyebrow">Step 3</div>
+        <div class="step-title">Draft</div>
+        <div class="step-desc">Write it in the Voice Card's register.</div>
+      </div>
+      <div class="workflow-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="workflow-step">
+        <div class="step-eyebrow">Step 4</div>
+        <div class="step-title">Review & Format</div>
+        <div class="step-desc">Check it, then shape it for the page.</div>
+      </div>
+    </div>
   </section>
 </main>
 
