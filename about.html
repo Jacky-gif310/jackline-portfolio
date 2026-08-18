@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>About — Jackline Mutheu</title>
+<meta name="description" content="About Jackline Mutheu — Machine Learning intern at FlyRank, working across ML and AI Fluency tracks.">
+<meta property="og:title" content="About — Jackline Mutheu">
+<meta property="og:description" content="Machine Learning intern at FlyRank, building practical systems that turn messy search data into evidence-based decisions.">
+<meta property="og:image" content="https://jacky-gif310.github.io/jackline-portfolio/social-preview.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jacky-gif310.github.io/jackline-portfolio/about.html">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -318,6 +325,68 @@ section[id] {
   margin: 0;
   line-height: 1.7;
   font-size: 14px;
+}
+
+/* Mini workflow diagram — reused inside the AI Workflow Automation card,
+   same visual language as the pipeline diagrams on process.html / case-studies.html */
+.mini-workflow {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 14px 0 2px;
+}
+
+.mini-step {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #F7F8FA;
+  border: 1px solid rgba(43,76,92,0.08);
+  border-radius: 9px;
+  padding: 8px 6px;
+  text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+
+.mini-step:hover {
+  box-shadow: 0 4px 12px rgba(43,76,92,0.08);
+  transform: translateY(-1px);
+}
+
+.mini-step + .mini-step { margin-left: 6px; }
+
+.mini-step .mini-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #D8A24A;
+  margin-bottom: 2px;
+}
+
+.mini-step .mini-title {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 12.5px;
+  color: #2B4C5C;
+}
+
+.mini-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  flex: 0 0 auto;
+}
+
+.mini-arrow svg { width: 11px; height: 11px; }
+.mini-arrow path { stroke: #D8A24A; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+@media (max-width: 420px) {
+  .mini-workflow { flex-direction: column; }
+  .mini-step + .mini-step { margin-left: 0; margin-top: 6px; }
+  .mini-arrow { width: auto; height: 12px; transform: rotate(90deg); margin: 0 auto; }
 }
 
 /* ===== SKILLS ===== */
@@ -731,9 +800,30 @@ section[id] {
       <h3>AI Workflow Automation</h3>
 
       <p>
-        A research and writing pipeline built around
-        Gather → Synthesize → Draft → Review using Claude Projects.
+        A research and writing pipeline built around Claude Projects.
       </p>
+
+      <div class="mini-workflow">
+        <div class="mini-step">
+          <div class="mini-eyebrow">1</div>
+          <div class="mini-title">Gather</div>
+        </div>
+        <div class="mini-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="mini-step">
+          <div class="mini-eyebrow">2</div>
+          <div class="mini-title">Synthesize</div>
+        </div>
+        <div class="mini-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="mini-step">
+          <div class="mini-eyebrow">3</div>
+          <div class="mini-title">Draft</div>
+        </div>
+        <div class="mini-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="mini-step">
+          <div class="mini-eyebrow">4</div>
+          <div class="mini-title">Review</div>
+        </div>
+      </div>
 
     </div>
 
@@ -956,9 +1046,16 @@ section[id] {
 <script>
   const contactForm = document.getElementById('contact-form');
   const contactStatus = document.getElementById('contact-status');
+  const contactButton = contactForm.querySelector('.contact-submit');
 
   contactForm.addEventListener('submit', async function (e) {
     e.preventDefault();
+
+    // Prevent double-submit on a fast double-click/tap
+    if (contactButton.disabled) return;
+    contactButton.disabled = true;
+    contactButton.textContent = 'Sending...';
+
     const data = new FormData(contactForm);
     contactStatus.textContent = 'Sending...';
 
@@ -977,6 +1074,9 @@ section[id] {
       }
     } catch (error) {
       contactStatus.textContent = "Network error — please try again.";
+    } finally {
+      contactButton.disabled = false;
+      contactButton.textContent = 'Send message →';
     }
   });
 </script>
